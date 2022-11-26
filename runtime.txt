@@ -1,1 +1,1 @@
-backports.zoneinfo;python_version<"3.10.6"
+backports.zoneinfo;python_version<"3.8"
