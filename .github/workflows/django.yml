@@ -4,7 +4,7 @@ name: CD
 on:
   # Triggers the workflow on push request events but only for the main branch
   push:
-    branches: [ deployment_setup ]
+    branches: [ main ]
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -22,7 +22,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
-          python-version: 3.7
+          python-version: 3.9
 
       - name: Install Dependencies
         run: |
