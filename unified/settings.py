@@ -27,7 +27,9 @@ SECRET_KEY = 'django-insecure-2uoa9%8%1j28y%ap#!r2sivxdz6ap75ylghl*mu#jus7(@94m+
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    'unifiedapp.herokuapp.com'
+    'unifiedapp.herokuapp.com',
+    'localhost',
+    '127.0.0.1'
 ]
 
 
@@ -41,6 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'unified'
 ]
 
 MIDDLEWARE = [
@@ -78,10 +81,21 @@ WSGI_APPLICATION = 'unified.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'djongo',
+        'NAME': 'unifiedDB',
+        'ENFORCE_SCHEMA': False,
+        'CLIENT': {
+            'host': 'mongodb+srv://admin:5IJUM2WDZ4tWTaZs@cluster0.a0ertea.mongodb.net/?retryWrites=true&w=majority'
+        }  
     }
 }
 
@@ -129,4 +143,11 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
-SECRET_KEY = os.environ['SECRET_KEY']
+#SECRET_KEY = os.environ['SECRET_KEY']
+
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    )
+}

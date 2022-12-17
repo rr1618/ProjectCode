@@ -14,6 +14,9 @@ cd unified
 django-admin startapp dataApp
 cd ..
 
+#Install all requirements
+python3 -m pip install -r requirements.txt 
+
 python manage.py migrate
 
 python manage.py createsuperuser --email admin@example.com --username admin
